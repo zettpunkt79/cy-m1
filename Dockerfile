@@ -53,7 +53,7 @@ RUN apt-get update && \
     # https://github.com/cypress-io/cypress/issues/4351#issuecomment-559489091
     echo 'pcm.!default {\n type hw\n card 0\n}\n\nctl.!default {\n type hw\n card 0\n}' > /root/.asoundrc
 
-# Copy cached cypress binary from intermediate container
+# Copy cypress binary from intermediate container
 COPY --from=builder /tmp/cypress-build/linux/build/linux-arm64-unpacked /root/.cache/Cypress/9.3.1/Cypress
 
 RUN npm install -g cypress@9.3.1 && \ 

@@ -24,7 +24,7 @@ RUN git clone https://github.com/cypress-io/cypress.git --depth 1 --branch v9.3.
   && yarn \ 
   && yarn binary-build --version 9.3.1
 
-FROM node:16-buster-slim
+FROM --platform=linux/arm64 node:16-buster-slim
 
 ENV TERM=xterm \
     NPM_CONFIG_LOGLEVEL=warn \

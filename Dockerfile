@@ -1,6 +1,7 @@
 FROM --platform=linux/arm64 node:16.13.0-bullseye as builder
 
-ENV CY_VERSION=9.4.1
+ARG VERSION=9.4.1
+ENV CY_VERSION=$VERSION
 
 # Install build dependencies
 RUN apt-get update && \
@@ -28,6 +29,8 @@ RUN git clone https://github.com/cypress-io/cypress.git --depth 1 --branch v${CY
 
 FROM --platform=linux/arm64 node:16-buster-slim
 
+ARG VERSION=9.4.1
+
 ENV TERM=xterm \
     NPM_CONFIG_LOGLEVEL=warn \
     QT_X11_NO_MITSHM=1 \
@@ -35,7 +38,7 @@ ENV TERM=xterm \
     _MITSHM=0 \
     CYPRESS_INSTALL_BINARY=0 \
     CYPRESS_CACHE_FOLDER=/root/.cache/Cypress \
-    CY_VERSION=9.4.1
+    CY_VERSION=$VERSION
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \

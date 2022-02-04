@@ -5,11 +5,11 @@ This Dockerfile is inspired by https://github.com/cypress-io/cypress-docker-imag
 ## Build example
 ```
 export CY_VERSION=9.4.1
-docker build -t "cypress/m1:${CY_VERSION}" .
+docker build -t "cypress/m1:${CY_VERSION}" --build-arg VERSION=${CY_VERSION} .
 ```
 
 ## Execution example
 ```
 export CY_VERSION=9.4.1
-docker run -it -v $PWD:/e2e -w /e2e cypress/m1:{CY_VERSION}
+docker run -it -v $PWD:/e2e -w /e2e cypress/m1:${CY_VERSION}
 ```
